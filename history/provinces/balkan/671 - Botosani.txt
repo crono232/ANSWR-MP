@@ -1,0 +1,11 @@
+owner = BKV
+controller = BKV
+add_core = BKV
+add_core = ROM
+trade_goods = fruit
+life_rating = 35
+
+2861.1.1 = {
+    controller = ROM
+    owner = ROM
+}
