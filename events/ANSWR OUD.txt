@@ -1,0 +1,502 @@
+##Oudrijk Centralization Event
+country_event = {
+	id = 222000
+	title = "EVTNAME222000"
+    desc = "EVTDESC222000"
+    major = yes
+    is_triggered_only = yes
+
+    option = {
+    	name = "EVTOPTA222000"
+    	any_country = {
+                limit = {
+                    is_culture_group = germanic
+                    has_country_modifier = oudrijk_prince
+                    in_sphere = THIS
+                    }
+                set_country_flag = oudrijk_centralization
+                }
+        any_country = {
+                limit = {
+                    NOT = { is_culture_group = germanic }
+                    has_country_modifier = oudrijk_prince
+                    }
+                country_event = { id = 222003 days = 1 }
+                }
+    }
+}
+##Germanic Spheres Acceptance Event
+country_event = {
+	id = 222001
+	title = "EVTNAME222001"
+    desc = "EVTDESC222001"
+    picture = "Celebration"
+    is_triggered_only = yes
+
+    mean_time_to_happen = {
+		days = 14
+		}
+
+    option = {
+    	name = "EVTOPTA222001"
+    	THIS = { all_core = { add_core = OUD } }
+    	all_core = { remove_core = THIS }
+    	OUD = { inherit = THIS }
+    	clr_country_flag = oudrijk_centralization
+    	}
+        option = {
+    	name = "EVTOPTB222001" #Refusal
+    	prestige = 25
+    	any_pop = { 
+    	limit = {
+    	is_primary_culture = yes
+    	is_accepted_culture = yes
+    	}
+    	militancy = 1
+    	}
+    	clr_country_flag = oudrijk_centralization
+    	FROM = { country_event = { id = 222002 days = 0 } }
+    	ai_chance = {
+            factor = 5
+            modifier = {
+                factor = 5
+                relation = { who = FROM value = -200 }
+            }
+            modifier = {
+                factor = 3
+                relation = { who = FROM value = -150 }
+            }
+            modifier = {
+                factor = 2
+                relation = { who = FROM value = -100 }
+            }
+        }
+    }
+}
+country_event = {
+	id = 222002
+	title = "EVTNAME222002"
+    desc = "EVTDESC222002"
+    picture = "Celebration"
+    is_triggered_only = yes
+
+    option = {
+    	name = "EVTOPTA222002" #The $COUNTRY_ADJ$ refused!
+    	remove_country_modifier = oudrijk_prince
+    	}
+    }
+
+#Non-Germanic Oudrijk members
+country_event = {
+    id = 222003
+    title = "EVTNAME222003"
+    desc = "EVTDESC222003"
+    picture = "Celebration"
+    is_triggered_only = yes
+
+    option = {
+        name = "EVTOPTA222003" #Time to look to other pastures
+        remove_country_modifier = oudrijk_prince
+        }
+    }
+
+######################
+### OUDRIJK EVENTS ###
+######################
+
+
+### Alligeneces Setup ###
+#Alligence in the Oudrijk
+country_event = {
+    id = 222004
+    title = "EVTNAME222004"
+    desc = "EVTDESC222004"
+    picture = autocracy
+    is_triggered_only = yes
+
+    option = {
+        name = "EVTOPTA222004" #Join Kaizer Faction/Fernost Faction
+        THIS = { add_country_modifier = { name = oudrijk_allegiance_fernost duration = -1 } }
+        relation = {
+            who = AUS
+            value = 20
+            }
+        relation = {
+            who = BOH
+            value = -50
+            }
+        AUS = { country_event = { id = 222005 days = 0 } }
+    ai_chance = {
+        factor = 0.49
+        modifier = {
+            factor = 2
+            relation = {
+            who = AUS
+            value = 150
+                }
+            }
+        modifier = {
+            factor = 10
+            in_sphere = AUS
+            }
+        }
+    }
+    option = {
+        name = "EVTOPTB222004" #Join Opposition Faction/Cislavet Faction
+        THIS = { add_country_modifier = { name = oudrijk_allegiance_cislavet duration = -1 } }
+        relation = {
+            who = BOH
+            value = 20
+            }
+        relation = {
+            who = AUS
+            value = -50
+            }
+        BOH = { country_event = { id = 222006 days = 0 } }
+        ai_chance = {
+        factor = 0.49
+        modifier = {
+            factor = 2
+            relation = {
+            who = BOH
+            value = 150
+                }
+            }
+        modifier = {
+            factor = 10
+            in_sphere = BOH
+            }
+        }
+    }
+    option = {
+        name = "EVTOPTC222004" #Nuetrality
+        relation = {
+            who = BOH
+            value = -10
+            }
+        relation = {
+            who = AUS
+            value = -10
+            }
+        relation = {
+            who = NET
+            value = 100
+            }
+        prestige = -1
+        ai_chance = {
+        factor = .02
+        modifier = {
+            factor = 100
+            in_sphere = NET
+            }
+        }
+    }
+}
+#Allegiance with the Fernost Faction
+country_event = {
+    id = 222005
+    title = "EVTNAME222005"
+    desc = "EVTDESC222005"
+    picture = autocracy
+    is_triggered_only = yes
+
+    option = {
+    name = "EVTOPTA222005"
+    AUS = { create_alliance = FROM }
+    BOH = { leave_alliance = FROM }
+    relation = {
+            who = FROM
+            value = 10
+            }
+    prestige = 3
+    BOH = { prestige = -1 }
+    }
+}
+#Allegiance with the Cislavet Faction
+country_event = {
+    id = 222006
+    title = "EVTNAME222006"
+    desc = "EVTDESC222006"
+    picture = autocracy
+    is_triggered_only = yes
+
+    option = {
+    name = "EVTOPTA222006"
+    BOH = { create_alliance = FROM }
+    AUS = { leave_alliance = FROM }
+    relation = {
+            who = FROM
+            value = 10
+            }
+    prestige = 3
+    AUS = { prestige = -1 }
+    }
+}
+## OUDRIJK STORY EVENTS ##
+#The Rijkskomst of 2840 (Oudrijk Gathering of Princes) 
+country_event = {
+    id = 222007
+    title = "EVTNAME222007"
+    desc = "EVTDESC222007"
+    picture = autocracy
+
+    trigger = {
+        has_country_modifier = oudrijk_prince
+        year = 2840
+        NOT = { OR = { TAG = AUS TAG = BOH } }
+        NOT = { has_country_flag = aus_rijkskomst_of_2840 }
+        NOT = { has_country_flag = boh_rijkskomst_of_2840 }
+        NOT = { has_country_flag = rijkskomst_of_2840}
+    }
+
+    option = {
+    name = "EVTOPTA222007"
+        prestige = 1
+        set_country_flag = rijkskomst_of_2840
+    }
+}
+#Rijkskomst of 2840 (BOH/AUS)
+country_event = {
+    id = 222008
+    title = "EVTNAME222008"
+    desc = "EVTDESC222008"
+    picture = autocracy
+
+    trigger = {
+        has_country_modifier = oudrijk_prince
+        year = 2840
+        TAG = AUS
+        NOT = { has_country_flag = aus_rijkskomst_of_2840 }
+    }
+
+    option = {
+    name = "EVTOPTA222008"
+        set_country_flag = aus_rijkskomst_of_2840
+    }
+}
+#Bohemian Rijkskomst
+country_event = {
+    id = 222009
+    title = "EVTNAME222009"
+    desc = "EVTDESC222009"
+    picture = autocracy
+
+    trigger = {
+        has_country_modifier = oudrijk_prince
+        year = 2840
+        TAG = BOH
+    }
+
+    option = {
+    name = "EVTOPTA222009"
+        set_country_flag = boh_rijkskomst_of_2840
+    }
+}
+#Rijkskomst van Gesegnet Proposal
+country_event = {
+    id = 222010
+    title = "EVTNAME222010"
+    desc = "EVTDESC222010"
+    major = yes
+
+    mean_time_to_happen = {
+        days = 7
+    }
+
+    trigger = {
+    has_country_flag = aus_rijkskomst_of_2840
+    tag = AUS
+    NOT = { has_country_flag = van_gesegnet_proposal }
+    }
+
+    option = {
+    name = "EVTOPTA222010"
+        prestige = -5
+        BOH = { country_event = 222011 }
+        set_country_flag = van_gesegnet_proposal
+    }
+
+}
+#Rijkskomst Controversy (BOH)
+country_event = {
+    id = 222011
+    title = "EVTNAME222011"
+    desc = "EVTDESC222011"
+    picture = bad_badboy
+    is_triggered_only = yes
+
+    #Walk out on the Rijkskomst
+    option = {
+    name = "EVTOPTA222011"
+        prestige = 5
+        any_country ={
+            limit = { 
+            exists = yes
+            has_country_modifier = oudrijk_prince
+            has_country_flag = rijkskomst_of_2840
+            }
+            country_event = 222012
+        }
+        relation = {
+        who = AUS
+        value = -100
+        }
+        consciousness = 1
+        AUS = { militancy = 1 }
+        set_global_flag = walked_out_on_rijkskomst
+        ai_chance = {
+            factor = 75
+        }
+    }
+    #Denounce Fernost proposal
+    option = {
+    name = "EVTOPTB222011"
+        prestige = 10
+        any_country ={
+            limit = { 
+            exists = yes
+            has_country_modifier = oudrijk_prince
+            has_country_flag = rijkskomst_of_2840
+            }
+            country_event = 222012
+        }
+        relation = {
+        who = AUS
+        value = -100
+        }
+        militancy = 1
+        AUS = { consciousness = 1 }
+        set_global_flag = denounced_van_gesegnet_proposal
+        ai_chance = {
+            factor = 25
+        }
+    }
+}
+
+#Calling the Council of Wien - AUS
+country_event = {
+    id = 222050
+    title = "EVTNAME222050"
+    desc = "EVTDESC222050"
+    picture = autocracy
+    is_triggered_only = yes
+
+    option = {
+    name = "EVTOPTA222050"
+        BOH = { country_event = 222051 }
+        any_country = {
+            has_country_modifier = oudrijk_prince
+        }
+    }
+}
+
+#Reaction to the Council of Wien - BOH
+country_event = {
+    id = 222051
+    title = "EVTNAME222051"
+    desc = "EVTDESC222051"
+    picture = autocracy
+    is_triggered_only = yes
+
+    #Ask for the redrawing of the Oudrijk
+    option = {
+    name = "EVTOPTA222051"
+        
+    }
+
+    #Propose the union of the van Kampioens, and van Gesegnets
+    option = {
+    name = "EVTOPTB222051"
+        
+    }
+
+    #Refuse to appear at the Council of Wien
+    
+}
+##Not Finished Repurcussions and War of the Seventh
+
+
+## OUDRIJK FLAVOR EVENTS ##
+### Province Events ###
+#Protests for Kaizer
+province_event = {
+    id = 223000
+    title = "EVTNAME223000"
+    desc = "EVTDESC223000"
+
+    allow_multiple_instances = yes
+
+    trigger = {
+        any_owned = {
+        is_core = OUD
+        }
+        year = 2837
+    }
+
+    mean_time_to_happen = { months = 600 }
+
+    option = {
+        name = "EVTOPTA223000"
+        diplomatic_influence = {
+            who = AUS
+            value = 50
+        }
+        militancy = 1
+        consciousness = 2
+    }
+}
+#Protests for Bohemia
+province_event = {
+    id = 223001
+    title = "EVTNAME223001"
+    desc = "EVTDESC223001"
+
+    allow_multiple_instances = yes
+
+    trigger = {
+        any_owned = {
+        is_core = OUD
+        }
+        year = 2837
+    }
+
+    mean_time_to_happen = { months = 600 }
+
+    option = {
+        name = "EVTOPTA223001"
+        diplomatic_influence = {
+            who = BOH
+            value = 50
+        }
+        militancy = 1
+        consciousness = 2
+    }
+}
+#Local Economy crashes due to instability
+province_event = {
+    id = 223002
+    title = "EVTNAME223001"
+    desc = "EVTDESC223001"
+
+    allow_multiple_instances = yes
+
+    trigger = {
+        any_owned = {
+        is_core = OUD
+        }
+        year = 2840
+        OR = { 
+        has_global_flag = denounced_van_gesegnet_proposal 
+        has_global_flag = walked_out_on_rijkskomst
+        }
+    }
+
+    mean_time_to_happen = { months = 600 }
+
+    option = {
+        name = "EVTOPTA223002"
+        treasury = -5000
+        militancy = 3
+        consciousness = 1
+    }
+}
