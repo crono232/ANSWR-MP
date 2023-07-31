@@ -1,7 +1,7 @@
 # ANSWR-MP
 Multiplayer edit of Victoria 2 mod A New Sun Will Rise
 
-Checksum DOSI
+Checksum QILL
 
 Based off latest commit (as of Jan 9th 2023) from https://github.com/TheBlazingOak/A-New-Sun-Will-Rise
 

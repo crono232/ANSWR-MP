@@ -1,0 +1,18 @@
+First commit:
+
+-Added grant decisions
+-Added host nation decisions
+-Added John Cena general event
+-Added QoL graphics (unit rearranging counter and 3 checks reminder)
+-Imported Reno unit and ship STATS (not the offensive/defensive units, need to find a way to do that without bricking the game)
+-Infamy decay changed to -0.25
+-Streamlined Romania formation decision
+-Streamlined Trans-Pacifica formation decision
+-Added some decisions for the Holy Australian Empire to centralize and get cores on the continent
+-Fixed a bunch of Australian provinces with misaligned positions files
+-Diplomat travel time now instant
+
+7/31/23:
+
+-OOB changes for Turkey
+-Economy tweak (factory in Poland)
