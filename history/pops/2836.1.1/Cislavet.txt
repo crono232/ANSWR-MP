@@ -53,13 +53,7 @@
     soldiers = {
         culture = czech
         religion = ketronant
-        size = 3000
-    }
-
-    soldiers = {
-        culture = czech
-        religion = ketronant
-        size = 750
+        size = 4000
     }
 
     farmers = {
@@ -116,16 +110,10 @@
         size = 300
     }
 
-    soldiers = {
-        culture = north_german
-        religion = ketronant
-        size = 300
-    }
-
     farmers = {
         culture = north_german
         religion = ketronant
-        size = 5775
+        size = 5875
     }
 
     aristocrats = {
@@ -158,16 +146,10 @@
         size = 2800
     }
 
-    soldiers = {
-        culture = ashkenazi
-        religion = jewish
-        size = 100
-    }
-
     farmers = {
         culture = ashkenazi
         religion = jewish
-        size = 1250
+        size = 1350
     }
 }
 #Hradec Kralove (441600/110400 POPS)
@@ -232,16 +214,10 @@
         size = 100
     }
 
-    soldiers = {
-        culture = austro_german
-        religion = ketronant
-        size = 350
-    }
-
     farmers = {
         culture = austro_german
         religion = ketronant
-        size = 6700
+        size = 7050
     }
 
     clergymen = {
@@ -262,16 +238,10 @@
         size = 100
     }
 
-    soldiers = {
-        culture = ashkenazi
-        religion = jewish
-        size = 100
-    }
-
     farmers = {
         culture = ashkenazi
         religion = jewish
-        size = 625
+        size = 725
     }
 }
 #Karlsbad (579200/144800 POPS)
